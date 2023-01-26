@@ -4,6 +4,8 @@ import net.querz.nbt.io.NBTDeserializer;
 import net.querz.nbt.io.NBTSerializer;
 import net.querz.nbt.io.NamedTag;
 import net.querz.nbt.tag.CompoundTag;
+import top.hackchen.mpt.MinecraftUUID;
+import top.hackchen.mpt.ReplaceUtil;
 
 import java.io.*;
 import java.util.*;
@@ -52,7 +54,7 @@ public class MCAFile {
 
     protected void writeMCA(String file) throws IOException {
         Set<Integer> counter = new HashSet<>(Arrays.asList(indices.size(), offsets.size(), timestamps.size(), tags.size()));
-        if (counter.size() != 1){
+        if (counter.size() != 1) {
             throw new RuntimeException("Data in memory has been broken.");
         }
         try (RandomAccessFile raf = new RandomAccessFile(file, "rw")) {
@@ -96,5 +98,17 @@ public class MCAFile {
             throw new RuntimeException(e);
         }
         return output.toByteArray();
+    }
+
+    public void replaceUUID(MinecraftUUID target, MinecraftUUID replacement) {
+        for (NamedTag tag : tags) {
+            ReplaceUtil.replaceUUIDReclusive(tag.getTag(), target, replacement);
+        }
+    }
+
+    public void testFind(MinecraftUUID target) {
+        for (NamedTag tag : tags) {
+            ReplaceUtil.testFindReclusive(tag.getTag(), target);
+        }
     }
 }
