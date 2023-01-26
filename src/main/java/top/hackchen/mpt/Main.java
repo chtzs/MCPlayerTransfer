@@ -12,16 +12,14 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 public class Main {
-    private static final int[] MY_UUID = {-1349816769, 858278922, -1439278174, -1147289869};
-    private static final int[] WEIRED_UUID = {-1862471028, 141373501, -1287581019, 282416614};
+    private static final int[] MY_UUID = {-1862471028, 141373501, -1287581019, 282416614};
 
     public static void main(String[] args) throws IOException {
-        System.out.println("Hello world!");
-        String[] list = list("G:/Temp/entities");
-        System.out.println(list[0]);
-        MCAFile mcaFile = MCAUtil.read(list[0]);
-        MCAUtil.write("G:/Temp/test.mca", mcaFile);
-        MCAFile read = MCAUtil.read("G:/Temp/test.mca");
+        MinecraftUUID uuid1 = MinecraftUUID.fromHexString("90fcf28c-086d-303d-b341-12a510d555e6");
+        MinecraftUUID uuid2 = MinecraftUUID.fromIntArray(MY_UUID);
+        System.out.println(uuid1);
+        System.out.println(uuid2);
+        System.out.println(uuid1.equals(uuid2));
     }
 
 
@@ -39,7 +37,7 @@ public class Main {
             ((CompoundTag) root).forEach((s, tag) -> printName(tag));
         } else if (root instanceof IntArrayTag) {
             IntArrayTag maybeUUID = (IntArrayTag) root;
-            if (Arrays.equals(maybeUUID.getValue(), WEIRED_UUID)) {
+            if (Arrays.equals(maybeUUID.getValue(), MY_UUID)) {
                 System.out.println("Found");
             }
         }
