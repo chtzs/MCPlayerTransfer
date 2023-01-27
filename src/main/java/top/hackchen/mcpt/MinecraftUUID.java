@@ -1,4 +1,4 @@
-package top.hackchen.mpt;
+package top.hackchen.mcpt;
 
 import net.querz.nbt.io.NBTUtil;
 import net.querz.nbt.io.NamedTag;

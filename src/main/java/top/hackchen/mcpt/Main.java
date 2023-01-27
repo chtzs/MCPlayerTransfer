@@ -1,4 +1,4 @@
-package top.hackchen.mpt;
+package top.hackchen.mcpt;
 
 import java.io.File;
 import java.io.IOException;
@@ -196,7 +196,7 @@ public class Main {
     }
 
     private static void printUsage() {
-        System.out.println("Usage: java mpt.jar -t <target_uuid> -r <replacement_uuid> -s <save_folder> -o <output_folder>");
+        System.out.println("Usage: java mcpt.jar -t <target_uuid> -r <replacement_uuid> -s <save_folder> -o <output_folder>");
         System.out.println("       A tool for replace world's player data with a new account.");
         System.out.println("       uuid: unique id of player");
         System.out.println("             You could leave a path to level.dat or /path/to/save/playerdata/<player_uuid>.dat,");

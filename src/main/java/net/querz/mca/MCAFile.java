@@ -4,8 +4,8 @@ import net.querz.nbt.io.NBTDeserializer;
 import net.querz.nbt.io.NBTSerializer;
 import net.querz.nbt.io.NamedTag;
 import net.querz.nbt.tag.CompoundTag;
-import top.hackchen.mpt.MinecraftUUID;
-import top.hackchen.mpt.FileUtil;
+import top.hackchen.mcpt.MinecraftUUID;
+import top.hackchen.mcpt.FileUtil;
 
 import java.io.*;
 import java.util.*;
