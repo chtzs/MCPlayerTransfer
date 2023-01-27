@@ -5,7 +5,7 @@ import net.querz.nbt.io.NBTSerializer;
 import net.querz.nbt.io.NamedTag;
 import net.querz.nbt.tag.CompoundTag;
 import top.hackchen.mpt.MinecraftUUID;
-import top.hackchen.mpt.ReplaceUtil;
+import top.hackchen.mpt.FileUtil;
 
 import java.io.*;
 import java.util.*;
@@ -102,13 +102,7 @@ public class MCAFile {
 
     public void replaceUUID(MinecraftUUID target, MinecraftUUID replacement) {
         for (NamedTag tag : tags) {
-            ReplaceUtil.replaceUUIDReclusive(tag.getTag(), target, replacement);
-        }
-    }
-
-    public void testFind(MinecraftUUID target) {
-        for (NamedTag tag : tags) {
-            ReplaceUtil.testFindReclusive(tag.getTag(), target);
+            FileUtil.replaceUUIDReclusive(tag.getTag(), target, replacement);
         }
     }
 }

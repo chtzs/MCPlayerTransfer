@@ -52,6 +52,28 @@ public class MinecraftUUID {
         return new MinecraftUUID(uuid);
     }
 
+    public String getTrimmedUUID() {
+        StringBuilder hex = new StringBuilder();
+        for (int i = 0; i < 4; i++) {
+            // solve overflow problem
+            hex.append(String.format("%08x", uuid[i] & 0xFFFFFFFFL));
+        }
+        return hex.toString();
+    }
+
+    public String getFullUUID() {
+        String trimmed = getTrimmedUUID();
+        return trimmed.substring(0, 8) +
+                '-' +
+                trimmed.substring(8, 12) +
+                '-' +
+                trimmed.substring(12, 16) +
+                '-' +
+                trimmed.substring(16, 20) +
+                '-' +
+                trimmed.substring(20, 32);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -67,19 +89,8 @@ public class MinecraftUUID {
 
     @Override
     public String toString() {
-        StringBuilder hex = new StringBuilder();
-        for (int i = 0; i < 4; i++) {
-            // solve overflow problem
-            hex.append(Long.toHexString(uuid[i] + (1L << 32)));
-        }
-        String trimmed = hex.toString();
-        String full = trimmed.substring(0, 8) +
-                '-' +
-                trimmed.substring(8, 12) +
-                '-' +
-                trimmed.substring(12, 16) +
-                '-' +
-                trimmed.substring(16, 32);
+        String trimmed = getTrimmedUUID();
+        String full = getFullUUID();
         return "MinecraftUUID {\n" +
                 "   Int Array UUID = " + Arrays.toString(uuid) +
                 ",\n   Full UUID = " + full +
