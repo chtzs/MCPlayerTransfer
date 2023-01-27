@@ -7,7 +7,7 @@ This will happen when you enter your old world with a new account of Minecraft. 
 
 
 ## How to use
-After compile codes into jar file(assume it as mcpt.jar), type the command follow on your console:
+After compile codes into jar file(assume it as mcpt.jar), type the following command on your console:
 ```shell
 java -jar mcpt.jar -t <target_uuid> -r <replacement_uuid> -s <save_folder> -o <output_folder>
 ```
