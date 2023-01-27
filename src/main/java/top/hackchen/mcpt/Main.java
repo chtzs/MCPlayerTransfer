@@ -69,7 +69,7 @@ public class Main {
             return;
         }
         if (o.exists()) {
-            System.out.printf("The output folder of world: %s is already exist. Do you want to delete it? Y/n", o);
+            System.out.printf("The output folder of world: %s is already exist. Do you want to delete it? (Y/n):", o);
             try (Scanner in = new Scanner(System.in)) {
                 String answer = in.next().toLowerCase(Locale.ROOT).trim();
                 if (answer.equals("yes") || answer.equals("y")) {
@@ -86,7 +86,8 @@ public class Main {
             }
         }
 
-        FileUtil.createDirectoryIfNotExist(o.toString());
+        outputFolder = o.toString();
+        FileUtil.createDirectoryIfNotExist(outputFolder);
 
         // Check UUID
         try {
@@ -100,8 +101,8 @@ public class Main {
 
         // Do the transfer
         System.out.println("Begin transferring...");
-        System.out.printf("User: %s --> %s", target.getFullUUID(), replacement.getFullUUID());
-        System.out.printf("Path: %s --> %s", saveFolder, outputFolder);
+        System.out.printf("User: %s --> %s\n", target.getFullUUID(), replacement.getFullUUID());
+        System.out.printf("Path: %s --> %s\n", saveFolder, outputFolder);
         beginTransferring(saveFolder, outputFolder, target, replacement);
         System.out.println("Done. Enjoy your game :D");
     }
@@ -196,7 +197,7 @@ public class Main {
     }
 
     private static void printUsage() {
-        System.out.println("Usage: java mcpt.jar -t <target_uuid> -r <replacement_uuid> -s <save_folder> -o <output_folder>");
+        System.out.println("Usage: java -jar mcpt.jar -t <target_uuid> -r <replacement_uuid> -s <save_folder> -o <output_folder>");
         System.out.println("       A tool for replace world's player data with a new account.");
         System.out.println("       uuid: unique id of player");
         System.out.println("             You could leave a path to level.dat or /path/to/save/playerdata/<player_uuid>.dat,");
