@@ -198,13 +198,13 @@ public class Main {
 
     private static void printUsage() {
         System.out.println("Usage: java -jar mcpt.jar -t <target_uuid> -r <replacement_uuid> -s <save_folder> -o <output_folder>");
-        System.out.println("       A tool for replace world's player data with a new account.");
+        System.out.println("       A tool for replace player's data with a new account.");
         System.out.println("       uuid: unique id of player");
         System.out.println("             You could leave a path to level.dat or /path/to/save/playerdata/<player_uuid>.dat,");
         System.out.println("             and the program will automatically find the uuid.");
         System.out.println("             You can also directly paste a player uuid, which could be found in https://mcuuid.net/.");
         System.out.println("       save_folder: Path to your world's save folder. They usually located in ./minecraft/saves/YOUR_WORLD_NAME");
-        System.out.println("       output_folder: The ROOT FOLDER where translated folder exist. The usually be your new 'saves' folder.\n");
+        System.out.println("       output_folder: The ROOT FOLDER where the translated folder exist. The usually be your new 'saves' folder.\n");
         System.out.println("       Example: java mpt.jar -t saves/MyWorld/level.dat -r YOUR_NEW_UUID -s saves/MyWorld -o new_saves");
     }
 }
